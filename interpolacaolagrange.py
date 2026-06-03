@@ -1,4 +1,4 @@
-2. Interpolação de Lagrange
+#2. Interpolação de Lagrange
 
 Python
 def interpolacao_lagrange(x_pontos, y_pontos, x_alvo):
