@@ -1,9 +1,5 @@
 def eliminacao_gauss(A, b):
-    """
-    Resolve o sistema linear Ax = b usando Eliminação de Gauss com pivotamento parcial.
-    A: Matriz dos coeficientes (lista de listas).
-    b: Vetor de constantes (lista).
-    """
+   
     n = len(b)
     
     # Construindo a matriz aumentada [A | b]
@@ -41,9 +37,38 @@ def eliminacao_gauss(A, b):
         
     return x
 
-# === TESTE GAUSS ===
-# Exemplo 2 do slide de Gauss (Página 33 do primeiro PDF)
-A_teste = [[3, 2, 4], [1, 1, 2], [4, 3, -2]]
-b_teste = [1, 2, 3]
+def enctrar_a0(a):
+    i = len(a)
+    y = 0
+    for b in range(i -1):
+        k = b % 2
+        if k == 0:
+            y += (-1) * (a[b] * 2)
+        else:
+            y += a[b] * 2
+    l = y + 1.9
+    return l
+
+def valor_da_altura(a , c):
+    i = len(a)
+    k = 0
+    for b in range(i):
+        k += a[b] * 3.5
+    y = (k + c) * (-1)
+    return y
+
+A_teste = [
+    [1, 1, 1, 1, 1],
+    [2, 4, 8, 16, 32],
+    [3, 9, 27, 81, 243],
+    [4, 16, 64, 256, 1024],
+    [5, 25, 125, 625, 3125]
+]
+
+b_teste = [1.2, 1.9, 3.2, 5.5, 8.2]
+
 solucao_gauss = eliminacao_gauss(A_teste, b_teste)
-print(f"Solução Gauss: {solucao_gauss}") # Esperado aproximado: [-3.0, 5.0, 0.0]
+constante = enctrar_a0(solucao_gauss)
+print(f"Solução Gauss: {solucao_gauss}")
+altura = valor_da_altura(solucao_gauss,constante)
+print(f"A altitude do drone :{altura} u.a")
