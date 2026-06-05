@@ -1,5 +1,4 @@
 4. Gregory-Newton (Para pontos equidistantes)
-Arquivo sugerido: interpolacao/gregory_newton.py
 
 Python
 def fatorial(n):
