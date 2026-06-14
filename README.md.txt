@@ -6,7 +6,7 @@ Este repositório contém as implementações dos métodos estudados na Unidade 
 
 ### Integrantes:
 - Alessandro Franca Ramos
-- Eduardo
+- Eduardo Di Minda Pereira Machado Chagas Oliveira
 
 
 ---
