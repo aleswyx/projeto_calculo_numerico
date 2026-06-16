@@ -23,7 +23,6 @@ def ajuste_linear_mmq(x, y):
         soma_x2 += x[i] ** 2
         
     # Aplicando as fórmulas diretas para 'a' e 'b' derivadas do sistema normal
-    # a = (n * Σxy - Σx * Σy) / (n * Σx² - (Σx)²)
     numerador_a = (n * soma_xy) - (soma_x * soma_y)
     denominador = (n * soma_x2) - (soma_x ** 2)
     
@@ -32,7 +31,7 @@ def ajuste_linear_mmq(x, y):
         
     a = numerador_a / denominador
     
-    # b = (Σy - a * Σx) / n  (ou seja, a média de y menos 'a' vezes a média de x)
+    # b = (Σy - a * Σx) / n
     b = (soma_y - a * soma_x) / n
     
     return a, b
@@ -44,23 +43,23 @@ def prever_valor(a, b, x_alvo):
     return (a * x_alvo) + b
 
 
-# --- Execução Principal com os dados da questão ---
+# --- BLOCO DE EXECUÇÃO EXIGIDO PELO PROFESSOR ---
+if __name__ == "__main__":
+    # Dados extraídos do slide 9 (Tráfego de rede no DEINF - UFMA)
+    x_horas = [8.0, 9.0, 10.0, 11.0, 12.0]
+    y_acessos = [2.1, 2.8, 3.1, 4.0, 4.8]
 
-# Dados extraídos do material (hora do dia e acessos em milhares)
-x_horas = [8.0, 9.0, 10.0, 11.0, 12.0]
-y_acessos = [2.1, 2.8, 3.1, 4.0, 4.8]
+    # 1. Encontrar a equação da reta
+    a, b = ajuste_linear_mmq(x_horas, y_acessos)
 
-# 1. Encontrar a equação da reta
-a, b = ajuste_linear_mmq(x_horas, y_acessos)
+    # 2. Prever o tráfego às 13h
+    hora_previsao = 13.0
+    acessos_previstos = prever_valor(a, b, hora_previsao)
 
-# 2. Prever o tráfego às 13h
-hora_previsao = 13.0
-acessos_previstos = prever_valor(a, b, hora_previsao)
-
-# Exibição dos resultados formatados
-print("--- Ajuste de Curvas (MMQ) ---")
-print(f"Coeficiente angular (a): {a:.4f}")
-print(f"Coeficiente linear (b):  {b:.4f}")
-print(f"Equação da reta:         P1(x) = {a:.2f}x {b:+.2f}")
-print("-" * 30)
-print(f"Previsão de tráfego às {hora_previsao}h: {acessos_previstos:.4f} (em milhares de acessos)")
+    # Exibição dos resultados formatados
+    print("--- Ajuste de Curvas (MMQ Linear) ---")
+    print(f"Coeficiente angular (a): {a:.4f}")
+    print(f"Coeficiente linear (b):  {b:.4f}")
+    print(f"Equação da reta:         P1(x) = {a:.4f}x {b:+.4f}")
+    print("-" * 40)
+    print(f"Previsão de tráfego às {hora_previsao:.1f}h: {acessos_previstos:.4f} milhares de acessos.")
