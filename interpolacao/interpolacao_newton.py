@@ -1,3 +1,5 @@
+# Interpolação Polinomial de Newton (Diferenças Divididas)
+
 def diferencas_divididas(x_pontos, y_pontos):
     """
     Constrói a tabela de diferenças divididas de Newton.
@@ -18,6 +20,7 @@ def diferencas_divididas(x_pontos, y_pontos):
     # Retorna a primeira linha da tabela, que contém os coeficientes do polinômio (a0, a1, a2...)
     return tabela[0]
 
+
 def interpolacao_newton(x_pontos, y_pontos, x_alvo):
     """
     Calcula o valor interpolado no ponto x_alvo usando o Polinômio de Newton.
@@ -34,13 +37,25 @@ def interpolacao_newton(x_pontos, y_pontos, x_alvo):
         
     return resultado
 
-# --- TESTE COM OS DADOS DO DRONE (PÁGINA 6 DO PDF) ---
+
+# --- BLOCO DE EXECUÇÃO EXIGIDO PELO PROFESSOR ---
 if __name__ == "__main__":
+    # Dados extraídos do slide 6 (Telemetria do drone autônomo)
     t_dados = [1.0, 2.0, 3.0, 4.0, 5.0]
     y_dados = [1.2, 1.9, 3.2, 5.5, 8.2]
     t_alvo = 3.5
     
+    # Execução do algoritmo nativo
     altitude_estimada = interpolacao_newton(t_dados, y_dados, t_alvo)
+    coefs = diferencas_divididas(t_dados, y_dados)
     
-    print(f"--- Teste: Interpolação de Newton ---")
-    print(f"A altitude estimada do drone em t = {t_alvo}s é: {altitude_estimada:.4f} metros")
+    # --- RETORNO DA RESPOSTA DO ALGORITMO ---
+    print("=" * 50)
+    print("         RESULTADO DA INTERPOLAÇÃO DE NEWTON        ")
+    print("=" * 50)
+    print(f"Dados de Tempo (t):    {t_dados} s")
+    print(f"Dados de Altitude (y): {y_dados} m")
+    print(f"Coeficientes (a0...an): {[round(c, 4) for c in coefs]}")
+    print("-" * 50)
+    print(f"Altitude estimada no instante t={t_alvo}s: {altitude_estimada:.4f} metros")
+    print("=" * 50)
