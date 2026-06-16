@@ -16,12 +16,11 @@ def quadratura_gauss(funcao, a, b, n_pontos):
         # Pesos correspondentes
         w = [5.0 / 9.0, 8.0 / 9.0, 5.0 / 9.0]
     else:
-        return "Erro: O algoritmo suporta apenas n=2 ou n=3."
+        raise ValueError("O algoritmo suporta apenas n=2 ou n=3.")
 
     integral = 0.0
     
     # Cálculo do Jacobiano para mudança de limites de integração [a, b] para [-1, 1]
-    # Mesmo o problema pedindo [-1, 1], essa generalização garante que a função funcione para qualquer intervalo
     jacobiano = (b - a) / 2.0
     media_ab = (b + a) / 2.0
 
@@ -36,22 +35,23 @@ def quadratura_gauss(funcao, a, b, n_pontos):
     return integral
 
 
-# --- Resolução do Problema Específico (Página 12) ---
+# --- BLOCO DE EXECUÇÃO EXIGIDO PELO PROFESSOR ---
+if __name__ == "__main__":
+    # Dados extraídos do slide 12 (Torque do motor)
+    def funcao_torque(x):
+        return 5 * (x ** 3) + (x ** 2) - 12 * x + 4
 
-# 1. Definindo a função da curva de torque do motor
-def funcao_torque(x):
-    return 5 * (x ** 3) + (x ** 2) - 12 * x + 4
+    limite_inferior = -1.0
+    limite_superior = 1.0
+    pontos_n = 2
 
-# 2. Definindo os parâmetros exigidos no enunciado
-limite_inferior = -1.0
-limite_superior = 1.0
-pontos_n = 2
+    # Calculando o trabalho total (integral)
+    trabalho_total = quadratura_gauss(funcao_torque, limite_inferior, limite_superior, pontos_n)
 
-# 3. Calculando o trabalho total (integral)
-trabalho_total = quadratura_gauss(funcao_torque, limite_inferior, limite_superior, pontos_n)
-
-# 4. Exibindo o retorno do algoritmo
-print(f"--- Resultado da Quadratura de Gauss ---")
-print(f"Limites de integração: [{limite_inferior}, {limite_superior}]")
-print(f"Número de pontos (n): {pontos_n}")
-print(f"Trabalho total (Integral calculada): {trabalho_total:.4f}")
+    # Exibindo o retorno do algoritmo
+    print("--- Resultado da Quadratura de Gauss ---")
+    print(f"Função integrada:      f(x) = 5x³ + x² - 12x + 4")
+    print(f"Limites de integração: [{limite_inferior}, {limite_superior}]")
+    print(f"Número de pontos (n):  {pontos_n}")
+    print("-" * 40)
+    print(f"Trabalho total (Integral calculada): {trabalho_total:.4f}")
