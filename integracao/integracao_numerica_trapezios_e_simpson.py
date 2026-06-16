@@ -34,26 +34,28 @@ def regra_simpson_13(v, h):
     return (h / 3) * soma
 
 
-# --- DADOS DO PROBLEMA (PÁGINA 11) ---
-# t (tempo em horas): [0.0, 0.5, 1.0, 1.5, 2.0]
-# v (velocidade em km/h): [0, 40, 65, 80, 90]
-# Como os intervalos são fixos de 30 em 30 minutos: h = 0.5
-tempo = [0.0, 0.5, 1.0, 1.5, 2.0]
-velocidade = [0, 40, 65, 80, 90]
-h_constante = 0.5
+# --- BLOCO DE EXECUÇÃO EXIGIDO PELO PROFESSOR ---
+if __name__ == "__main__":
+    # Dados extraídos do material (Página 11 - Carro Elétrico)
+    # t (tempo em horas): [0.0, 0.5, 1.0, 1.5, 2.0]
+    # v (velocidade em km/h): [0, 40, 65, 80, 90]
+    # Como os intervalos são fixos de 30 em 30 minutos: h = 0.5
+    tempo = [0.0, 0.5, 1.0, 1.5, 2.0] [cite: 69]
+    velocidade = [0, 40, 65, 80, 90] [cite: 69]
+    h_constante = 0.5
 
-# Execução dos métodos nativos
-distancia_trapezio = regra_dos_trapezios(velocidade, h_constante)
-distancia_simpson = regra_simpson_13(velocidade, h_constante)
+    # Execução dos métodos nativos
+    distancia_trapezio = regra_dos_trapezios(velocidade, h_constante)
+    distancia_simpson = regra_simpson_13(velocidade, h_constante)
 
-# --- RETORNO DA RESPOSTA DO ALGORITMO ---
-print("=" * 50)
-print("   RESULTADO DA INTEGRAÇÃO NUMÉRICA (PÁGINA 11)   ")
-print("=" * 50)
-print(f"Dados de Tempo (t):     {tempo} h")
-print(f"Velocidade (v):         {velocidade} km/h")
-print(f"Passo constante (h):    {h_constante}")
-print("-" * 50)
-print(f"Distância (Regra dos Trapézios): {distancia_trapezio:.2f} km")
-print(f"Distância (Regra 1/3 de Simpson): {distancia_simpson:.2f} km")
-print("=" * 50)
+    # --- RETORNO DA RESPOSTA DO ALGORITMO ---
+    print("=" * 50)
+    print("   RESULTADO DA INTEGRAÇÃO NUMÉRICA (PÁGINA 11)   ")
+    print("=" * 50)
+    print(f"Dados de Tempo (t):     {tempo} h")
+    print(f"Velocidade (v):         {velocidade} km/h")
+    print(f"Passo constante (h):    {h_constante}")
+    print("-" * 50)
+    print(f"Distância (Regra dos Trapézios): {distancia_trapezio:.2f} km")
+    print(f"Distância (Regra 1/3 de Simpson): {distancia_simpson:.2f} km")
+    print("=" * 50)
