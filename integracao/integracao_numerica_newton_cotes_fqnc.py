@@ -15,23 +15,26 @@ def simpson_38(t, v, h):
     integral = (3 * h / 8) * soma
     return integral
 
-# --- DADOS DO PROBLEMA (PÁGINA 10) ---
-# t (em segundos): [0, 2, 4, 6] com h = 2
-# v (banda em MB/s): [10, 15, 12, 8]
-tempo = [0, 2, 4, 6]
-velocidade = [10, 15, 12, 8]
-h_constante = 2
 
-# Execução do algoritmo nativo
-total_mb = simpson_38(tempo, velocidade, h_constante)
+# --- BLOCO DE EXECUÇÃO EXIGIDO PELO PROFESSOR ---
+if __name__ == "__main__":
+    # Dados extraídos do material (Página 10 - FQNC)
+    # t (em segundos): [0, 2, 4, 6] com h = 2
+    # v (banda em MB/s): [10, 15, 12, 8]
+    tempo = [0, 2, 4, 6]
+    velocidade = [10, 15, 12, 8]
+    h_constante = 2
 
-# --- RETORNO DA RESPOSTA DO ALGORITMO ---
-print("=" * 50)
-print("   RESULTADO DA INTEGRAÇÃO NUMÉRICA (NEWTON-COTES)   ")
-print("=" * 50)
-print(f"Dados de Tempo (t):       {tempo} s")
-print(f"Dados de Velocidade (v):  {velocidade} MB/s")
-print(f"Espaçamento constante (h): {h_constante}")
-print("-" * 50)
-print(f"Total de dados transferidos: {total_mb:.2f} MB")
-print("=" * 50)
+    # Execução do algoritmo nativo
+    total_mb = simpson_38(tempo, velocidade, h_constante)
+
+    # --- RETORNO DA RESPOSTA DO ALGORITMO ---
+    print("=" * 50)
+    print("   RESULTADO DA INTEGRAÇÃO NUMÉRICA (NEWTON-COTES)   ")
+    print("=" * 50)
+    print(f"Dados de Tempo (t):        {tempo} s")
+    print(f"Dados de Velocidade (v):  {velocidade} MB/s")
+    print(f"Espaçamento constante (h): {h_constante}")
+    print("-" * 50)
+    print(f"Total de dados transferidos: {total_mb:.2f} MB")
+    print("=" * 50)
