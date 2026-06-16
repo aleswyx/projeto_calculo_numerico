@@ -1,3 +1,5 @@
+# Interpolação por Splines (Linear e Cúbica Natural)
+
 def spline_linear(t, y, valor_alvo):
     """
     Calcula a Spline Linear para um valor alvo.
@@ -37,7 +39,7 @@ def spline_cubica_natural(t, y, valor_alvo):
         termo2 = (3.0 / h[i-1]) * (a[i] - a[i-1])
         alpha[i] = termo1 - termo2
         
-    # Passo 2: Resolução do sistema tridiagonal (Algoritmo de Thomas / Eliminação)
+    # Passo 2: Resolução do sistema tridiagonal (Algoritmo de Thomas)
     # Inicializando vetores auxiliares
     l = [1.0] * (n + 1)
     mu = [0.0] * (n + 1)
@@ -73,18 +75,10 @@ def spline_cubica_natural(t, y, valor_alvo):
     return None
 
 
-# --- Execução Principal com os dados da questão ---
-
-# Dados extraídos do material
-tempos = [0.0, 1.0, 2.0, 3.0] # [cite: 49]
-posicoes = [2.5, 4.5, 3.0, 6.0] # [cite: 50]
-instante_alvo = 1.5 # [cite: 51]
-
-# Chamada dos métodos
-resultado_linear = spline_linear(tempos, posicoes, instante_alvo)
-resultado_cubica = spline_cubica_natural(tempos, posicoes, instante_alvo)
-
-# Exibição dos resultados (Simulando o "Retorno da resposta do algoritmo")
-print(f"--- Interpolação para t = {instante_alvo} ---")
-print(f"Spline Linear (movimento robótico):  {resultado_linear:.4f} cm")
-print(f"Spline Cúbica (movimento suave):     {resultado_cubica:.4f} cm")
+# --- BLOCO DE EXECUÇÃO EXIGIDO PELO PROFESSOR ---
+if __name__ == "__main__":
+    # Dados extraídos do slide 8 (Trajetória do Braço Robótico)
+    # t (tempo em segundos): [0.0, 1.0, 2.0, 3.0]
+    # y (posição em cm): [2.5, 4.5, 3.0, 6.0]
+    tempos = [0.0, 1.0, 2.0, 3.0]
+    posicoes =
